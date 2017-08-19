@@ -9,7 +9,8 @@ class StartPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      custom: false
+      custom: false,
+      error: ''
     }
   }
   onFormSubmit(e) {
@@ -19,8 +20,11 @@ class StartPage extends Component {
     const mineNum = this.refs.mineNum.value;
     const restToWin = height * width - mineNum;
 
-    if(height < 20 && width < 20 && height > 0 && width > 0 && mineNum < height * width) {
+    if(height < 17 && width < 31 && height > 0 && width > 0 && mineNum < height * width && mineNum > 0) {
       const state = getState(height, width, mineNum);
+      this.setState({
+        error: ''
+      });
       this.refs.height.value = '';
       this.refs.width.value = '';
       this.refs.mineNum.value = '';
@@ -30,10 +34,18 @@ class StartPage extends Component {
       this.props.setupMines(mineNum)
       this.props.setupH(height);
       this.props.setupW(width);
-    } else if(mineNum > height * width) {
-      console.log('number of mines must be smaller from numbers of fields');
+    } else if(height < 17 && width < 31 && height > 0 && width > 0 && mineNum > 0) {
+      this.setState({
+        error: `ERROR: Number of mines must be smaller from numbers of fields. Your field number is ${height * width} and number of mines is ${mineNum}`
+      });
+    } else if(mineNum < 1) {
+      this.setState({
+        error: `ERROR: You must have mines. Game without mines is absurd`
+      });
     } else {
-      console.log('error');
+      this.setState({
+        error: `ERROR:You must enter number of rows and columnes. Maximum number of rows is 16 and maximum number of columnes is 30`
+      });
     }
   }
   onStart(e) {
@@ -73,20 +85,28 @@ class StartPage extends Component {
   }
 
   render() {
+    function renderError() {
+      if(this.state.error) {
+        return (
+          <div className="error">{this.state.error}</div>
+        )
+      }
+    }
     function renderCustomForm() {
       if(this.state.custom) {
         return (
           <form onSubmit={this.onFormSubmit.bind(this)}>
             <label>Enter number of rows: </label>
-            <input ref="height" type="number" placeholder="maximum is 20" />
+            <input ref="height" type="number" placeholder="maximum is 16" />
             <br />
             <label>Enter number of columns: </label>
-            <input ref="width" type="number" placeholder="maximum is 20" />
+            <input ref="width" type="number" placeholder="maximum is 30" />
             <br />
             <label>Enter number of mines</label>
             <input ref="mineNum" type="number"/>
             <br />
             <button type="submit">Start Game</button>
+            {renderError.bind(this)()}
           </form>
         )
       } else {
