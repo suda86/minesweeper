@@ -1,7 +1,7 @@
 .game-field-closed  {
   width: 38px;
   height: 38px;
-  background-color: LightSlateGray  ;
+  background-color: #4056A1;
   border-radius: 4px;
   display: table-cell;
   cursor: pointer;
@@ -10,7 +10,7 @@
   width: 38px;
   height: 38px;
   /*max-height: 35px;*/
-  background-color: LightGray ;
+  background-color: #C5CBE3 ;
   border-radius: 4px;
   display: table-cell;
   text-align: center;
@@ -19,7 +19,8 @@
 .game-field-blocked  {
   width: 38px;
   height: 38px;
-  background-color: Tomato ;
+  background: #C5CBE3 url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Antu_flag-red.svg/120px-Antu_flag-red.svg.png') center no-repeat;
+  background-size: 32px;
   border-radius: 2px;
   display: table-cell;
   text-align: center;
@@ -28,7 +29,8 @@
 .game-field-mine  {
   width: 38px;
   height: 38px;
-  background-color: Maroon;
+  background: #F13C20 url('https://d30y9cdsu7xlg0.cloudfront.net/png/9966-200.png') center no-repeat;
+  background-size: 32px;
   border-radius: 2px;
   display: table-cell;
   text-align: center;
