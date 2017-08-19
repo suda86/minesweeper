@@ -1,0 +1,48 @@
+.title {
+  text-align: center;
+  color: Maroon;
+  font-size: 3em;
+}
+
+form {
+  text-align: center;
+  margin-top: 25px;
+}
+
+select {
+  width: 40%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: DarkKhaki;
+  font-style: oblique;
+  font-weight: bold;
+  color: Maroon;
+  font-family: fantasy;
+  font-size: 1em;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: Tan ;
+  margin-top: 25px;
+  font-weight: bold;
+  color: Maroon;
+}
+
+label {
+  color: Maroon;
+  font-style: italic;
+}
+
+input {
+  width: 30%;
+  padding: 12px 20px;
+  background-color: DarkKhaki;
+  margin: 10px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

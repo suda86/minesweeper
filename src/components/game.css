@@ -1,0 +1,19 @@
+.game-row {
+  display: table-row;
+  text-align: center;
+}
+
+.game {
+  border-spacing: 3px;
+  margin: auto;
+  display: table;
+  }
+
+h3 {
+  text-align: center;
+  color: Maroon;
+}
+
+.new-game-button {
+  text-align: center;
+}

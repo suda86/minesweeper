@@ -10,4 +10,6 @@ export const OPEN_FIELD = 'OPEN_FIELD';
 export const BOOM_FIELD = 'BOOM_FIELD';
 export const SETUP_H = 'SETUP_H';
 export const SETUP_W = 'SETUP_W';
-// export const OPEN_ZERO_FIELD = 'OPEN_ZERO_FIELD';
+export const SETUP_MINES = 'SETUP_MINES';
+export const PLUS_MINES = 'PLUS_MINES';
+export const MINUS_MINES = 'MINUS_MINES';

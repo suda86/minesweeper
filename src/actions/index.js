@@ -10,7 +10,10 @@ import {
   OPEN_FIELD,
   BOOM_FIELD,
   SETUP_H,
-  SETUP_W
+  SETUP_W,
+  SETUP_MINES,
+  PLUS_MINES,
+  MINUS_MINES
 } from '../constants';
 
 
@@ -18,6 +21,25 @@ export function changePage(page) {
   return {
     type: CHANGE_PAGE,
     page
+  }
+}
+
+export function setupMines(num) {
+  return {
+    type: SETUP_MINES,
+    num
+  }
+}
+
+export function addMine() {
+  return {
+    type: PLUS_MINES
+  }
+}
+
+export function removeMine() {
+  return {
+    type: MINUS_MINES
   }
 }
 

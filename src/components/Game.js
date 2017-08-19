@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
-
+import './game.css'
 import GameField from './GameField';
 
 class Game extends Component {
@@ -11,38 +11,37 @@ class Game extends Component {
     this.props.victory(false);
   }
   render() {
-    function renderGameover() {
-      if(this.props.end) {
+    function renderStartNewGameButton() {
+      if(this.props.end || this.props.victoryStatus) {
         return (
           <div>
-            <h3>Game Over</h3>
             <button onClick={this.onButtonClick.bind(this)}>Start new Game</button>
           </div>
         )
       }
     }
-    function renderVictory() {
-      if(this.props.victoryStatus) {
-        console.log(this.props.victoryStatus);
-        return (
-          <div>
-            <h3>You Won!</h3>
-            <button onClick={this.onButtonClick.bind(this)}>Start new Game</button>
-          </div>
-        )
+
+    function renderMessage() {
+      if(this.props.end) {
+        console.log('sa');
+        return 'Game Over'
+      } else if(this.props.victoryStatus) {
+        return 'You Won!'
+      } else {
+        return `Mines: ${this.props.mines}`
       }
     }
     return (
       <div>
-        <h1>Game Page</h1>
+        <h3>{renderMessage.bind(this)()}</h3>
+        <div className="game">
         {this.props.game.map((arr, i) => {
           return (
-            <div key={i}>{arr.map((item, j) => <GameField key={j} i={i} j={j}/>)}</div>
+            <div className="game-row" key={i}>{arr.map((item, j) => <GameField key={j} i={i} j={j}/>)}</div>
           )
         })}
-        <div>{renderGameover.bind(this)()}</div>
-        <div>{renderVictory.bind(this)()}</div>
-
+        </div>
+        <div className="new-game-button">{renderStartNewGameButton.bind(this)()}</div>
       </div>
     )
   }
@@ -53,7 +52,8 @@ function mapStateToProps(state) {
     game: state.game,
     end: state.end,
     victoryStatus: state.victoryStatus,
-    count: state.victoryCount
+    count: state.victoryCount,
+    mines: state.mines
   }
 }
 
