@@ -34,7 +34,7 @@ button {
 }
 
 label {
-  color: #D79922;
+  color: #4056A1;
   font-style: italic;
 }
 
@@ -50,7 +50,7 @@ input {
 }
 
 input::placeholder {
-  color: #D79922;
+  color: #F13C20;
 }
 
 .error {
