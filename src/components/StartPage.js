@@ -17,10 +17,11 @@ class StartPage extends Component {
       this.refs.height.value = '';
       this.refs.width.value = '';
       this.refs.mineNum.value = '';
-      console.log(state);
       this.props.loadState(state);
       this.props.changePage('game');
       this.props.setupCount(restToWin);
+      this.props.setupH(height);
+      this.props.setupW(width);
     } else if(mineNum > height * width) {
       console.log('number of mines must be smaller from numbers of fields');
     } else {

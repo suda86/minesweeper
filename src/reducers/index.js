@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 import pageReducer from './page_reducer';
 import gameReducer from './game_reducer';
 import endReducer from './end_reducer';
+import H from './H_reducer';
+import W from './W_reducer';
 import { victoryStatus, victoryCount } from './victory_reducer'
 
 const reducer = combineReducers({
@@ -10,7 +12,9 @@ const reducer = combineReducers({
   game: gameReducer,
   end: endReducer,
   victoryStatus: victoryStatus,
-  victoryCount: victoryCount
+  victoryCount: victoryCount,
+  H,
+  W
 })
 
 export default reducer;

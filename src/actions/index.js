@@ -4,13 +4,68 @@ import {
   GAME_OVER,
   SETUP_COUNTER,
   COUNT_DOWN,
-  VICTORY
+  VICTORY,
+  BLOCK_FIELD,
+  DEBLOCK_FIELD,
+  OPEN_FIELD,
+  BOOM_FIELD,
+  SETUP_H,
+  SETUP_W
 } from '../constants';
+
 
 export function changePage(page) {
   return {
     type: CHANGE_PAGE,
     page
+  }
+}
+
+export function setupH(h) {
+  return {
+    type: SETUP_H,
+    h
+  }
+}
+
+export function setupW(w) {
+  return {
+    type: SETUP_W,
+    w
+  }
+}
+
+export function block(i,j) {
+  return {
+    type: BLOCK_FIELD,
+    i,
+    j
+  }
+}
+
+
+
+export function boom(i,j) {
+  return {
+    type: BOOM_FIELD,
+    i,
+    j
+  }
+}
+
+export function open(i,j) {
+  return {
+    type: OPEN_FIELD,
+    i,
+    j
+  }
+}
+
+export function deblock(i,j) {
+  return {
+    type: DEBLOCK_FIELD,
+    i,
+    j
   }
 }
 

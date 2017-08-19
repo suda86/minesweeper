@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index'
 import './gameField.css';
+import open from '../helpers/open';
 
 class GameField extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      fieldStatus: 'closed'
-    }
-  }
+
   componentWillReceiveProps(nextProps) {
     if(nextProps.count === 0) {
       this.props.victory(true)
@@ -17,44 +13,33 @@ class GameField extends Component {
   }
   onRightClick(e) {
     e.preventDefault()
-    if(this.state.fieldStatus === 'blocked' && !this.props.end && !this.props.victoryStatus) {
-      this.setState({
-        fieldStatus: 'closed'
-      })
-    } else if(!this.props.end && !this.props.victoryStatus){
-      this.setState({
-        fieldStatus: 'blocked'
-      })
+    if(this.props.game[this.props.i][this.props.j].status === 'blocked' && !this.props.end && !this.props.victoryStatus) {
+      this.props.deblock(this.props.i, this.props.j);
+    } else if(!this.props.end && !this.props.victoryStatus) {
+      this.props.block(this.props.i, this.props.j);
     }
   }
   onClick() {
-    if(this.props.game[this.props.i][this.props.j] !== 'M' && !this.props.end) {
-      this.setState({
-        fieldStatus: 'opened'
-      })
-      this.props.countDown();
-    } else if(this.props.game[this.props.i][this.props.j] === 'M' && !this.props.end && !this.props.victoryStatus){
-      this.setState({
-        fieldStatus: 'mine'
-      })
-      this.props.gameOver(true)
-
-    }
+    open.bind(this)(this.props.i, this.props.j)
   }
   render() {
-    if(this.state.fieldStatus === 'closed') {
+    if(this.props.game[this.props.i][this.props.j].status === 'closed') {
       return (
         <div className="game-field-closed" onContextMenu={this.onRightClick.bind(this)} onClick={this.onClick.bind(this)}>.</div>
       )
-    } else if(this.state.fieldStatus === 'opened') {
+    } else if(this.props.game[this.props.i][this.props.j].status === 'opened' && this.props.game[this.props.i][this.props.j].value === 0) {
       return (
-        <div className="game-field-opened" >{this.props.game[this.props.i][this.props.j]}</div>
+        <div className="game-field-opened" >.</div>
       )
-    } else if(this.state.fieldStatus === 'blocked') {
+    } else if(this.props.game[this.props.i][this.props.j].status === 'opened') {
+      return (
+        <div className="game-field-opened" >{this.props.game[this.props.i][this.props.j].value}</div>
+      )
+    } else if(this.props.game[this.props.i][this.props.j].status === 'blocked') {
         return (
           <div className="game-field-blocked" onContextMenu={this.onRightClick.bind(this)} >M</div>
         )
-    } else if(this.state.fieldStatus === 'mine') {
+    } else if(this.props.game[this.props.i][this.props.j].status === 'mine') {
       return (
         <div className="game-field-mine" >.</div>
       )
@@ -67,7 +52,9 @@ function mapStateToProps(state) {
     game: state.game,
     end: state.end,
     count: state.victoryCount,
-    victoryStatus: state.victoryStatus
+    victoryStatus: state.victoryStatus,
+    H: state.H,
+    W: state.W
   }
 }
 
