@@ -20,6 +20,7 @@ select {
   color: Maroon;
   font-family: fantasy;
   font-size: 1em;
+  cursor: pointer;
 }
 
 button {
@@ -29,6 +30,7 @@ button {
   margin-top: 25px;
   font-weight: bold;
   color: Maroon;
+  cursor: pointer;
 }
 
 label {

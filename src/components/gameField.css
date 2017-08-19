@@ -4,6 +4,7 @@
   background-color: LightSlateGray  ;
   border-radius: 4px;
   display: table-cell;
+  cursor: pointer;
 }
 .game-field-opened  {
   width: 38px;
@@ -13,6 +14,7 @@
   border-radius: 4px;
   display: table-cell;
   text-align: center;
+  cursor: pointer;
 }
 .game-field-blocked  {
   width: 38px;
@@ -21,6 +23,7 @@
   border-radius: 2px;
   display: table-cell;
   text-align: center;
+  cursor: pointer;
 }
 .game-field-mine  {
   width: 38px;
@@ -29,6 +32,8 @@
   border-radius: 2px;
   display: table-cell;
   text-align: center;
+  cursor: pointer;
+  cursor: pointer;
 }
 
 .value-1-2 {
