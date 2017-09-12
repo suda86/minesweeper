@@ -55,7 +55,7 @@ export default function opening(i, j) {
   } else if(this.props.game[i][j].value !== 'M' && !this.props.end  && this.props.game[i][j].status === 'closed') {
     this.props.countDown();
     this.props.open(i, j)
-  } else if(this.props.game[i][j].value === 'M' && !this.props.end && !this.props.victoryStatus){
+  } else if(this.props.game[i][j].value === 'M' && !this.props.end && !this.props.victoryStatus  && this.props.game[i][j].status !== 'blocked'){
     this.props.boom(i, j);
     this.props.gameOver(true);
     for(let i = 0; i < this.props.H; i ++) {
