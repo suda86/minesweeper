@@ -38,23 +38,43 @@
   cursor: pointer;
 }
 
-.value-1-2 {
+.value1 {
   font-size: 12px;
   font-weight: bold;
   color: RoyalBlue ;
 }
-.value-3-4 {
+.value2 {
   font-size: 12px;
   font-weight: bold;
-  color: Peru;
+  color: green
 }
-.value-5-6 {
+.value3 {
   font-size: 12px;
   font-weight: bold;
-  color: FireBrick;
+  color: brown
 }
-.value-7-8 {
+.value4 {
   font-size: 12px;
   font-weight: bold;
-  color: MidnightBlue;
+  color:tomato ;
+}
+.value5 {
+  font-size: 12px;
+  font-weight: bold;
+  color: fuchsia ;
+}
+.value6 {
+  font-size: 12px;
+  font-weight: bold;
+  color: slateblue ;
+}
+.value7 {
+  font-size: 12px;
+  font-weight: bold;
+  color:indianred ;
+}
+.value8 {
+  font-size: 12px;
+  font-weight: bold;
+  color: maroon ;
 }

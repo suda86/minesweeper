@@ -10,30 +10,31 @@ class Game extends Component {
     this.props.gameOver(false);
     this.props.victory(false);
   }
-  render() {
-    function renderStartNewGameButton() {
-      if(this.props.end || this.props.victoryStatus) {
-        return (
-          <div>
-            <button onClick={this.onButtonClick.bind(this)}>Start new Game</button>
-          </div>
-        )
-      }
-    }
 
-    function renderMessage() {
-      if(this.props.end) {
-        console.log('sa');
-        return 'Game Over'
-      } else if(this.props.victoryStatus) {
-        return 'You Won!'
-      } else {
-        return `Mines: ${this.props.mines}`
-      }
+  renderStartNewGameButton() {
+    if(this.props.end || this.props.victoryStatus) {
+      return (
+        <div>
+          <button onClick={this.onButtonClick.bind(this)}>Start new Game</button>
+        </div>
+      )
     }
+  }
+
+  renderMessage() {
+    if(this.props.end) {
+      return 'Game Over'
+    } else if(this.props.victoryStatus) {
+      return 'You Won!'
+    } else {
+      return `Mines: ${this.props.mines}`
+    }
+  }
+
+  render() {
     return (
       <div>
-        <h3>{renderMessage.bind(this)()}</h3>
+        <h3>{this.renderMessage()}</h3>
         <div className="game">
         {this.props.game.map((arr, i) => {
           return (
@@ -41,7 +42,7 @@ class Game extends Component {
           )
         })}
         </div>
-        <div className="new-game-button">{renderStartNewGameButton.bind(this)()}</div>
+        <div className="new-game-button">{this.renderStartNewGameButton()}</div>
       </div>
     )
   }

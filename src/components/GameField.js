@@ -24,13 +24,13 @@ class GameField extends Component {
     }
   }
   onClick() {
-    open.bind(this)(this.props.i, this.props.j);
+    open.call(this, this.props.i, this.props.j);
   }
 
   onDubClick() {
-    let minesNumber = countMines.bind(this)(this.props.i, this.props.j);
+    let minesNumber = countMines.call(this, this.props.i, this.props.j);
     if(this.props.game[this.props.i][this.props.j].value === minesNumber) {
-      openAround.bind(this)(this.props.i, this.props.j);
+      openAround.call(this, this.props.i, this.props.j);
     }
   }
   render() {
@@ -42,23 +42,11 @@ class GameField extends Component {
       return (
         <div className="game-field-opened" ></div>
       )
-    } else if(this.props.game[this.props.i][this.props.j].status === 'opened' && (this.props.game[this.props.i][this.props.j].value === 1 || this.props.game[this.props.i][this.props.j].value === 2)) {
+    } else if(this.props.game[this.props.i][this.props.j].status === 'opened') {
       return (
-        <div className="game-field-opened" onDoubleClick={this.onDubClick.bind(this)} ><p className="value-1-2">{this.props.game[this.props.i][this.props.j].value}</p></div>
+        <div className="game-field-opened" onDoubleClick={this.onDubClick.bind(this)} ><p className={`value${this.props.game[this.props.i][this.props.j].value}`}>{this.props.game[this.props.i][this.props.j].value}</p></div>
       )
-    } else if(this.props.game[this.props.i][this.props.j].status === 'opened'  && (this.props.game[this.props.i][this.props.j].value === 3 || this.props.game[this.props.i][this.props.j].value === 4)) {
-      return (
-        <div className="game-field-opened" onDoubleClick={this.onDubClick.bind(this)} ><p className="value-3-4">{this.props.game[this.props.i][this.props.j].value}</p></div>
-      )
-    } else if(this.props.game[this.props.i][this.props.j].status === 'opened'  && (this.props.game[this.props.i][this.props.j].value === 5 || this.props.game[this.props.i][this.props.j].value === 6)) {
-      return (
-        <div className="game-field-opened" onDoubleClick={this.onDubClick.bind(this)} ><p className="value-5-6">{this.props.game[this.props.i][this.props.j].value}</p></div>
-      )
-    } else if(this.props.game[this.props.i][this.props.j].status === 'opened'  && (this.props.game[this.props.i][this.props.j].value === 7 || this.props.game[this.props.i][this.props.j].value === 8)) {
-      return (
-        <div className="game-field-opened" onDoubleClick={this.onDubClick.bind(this)} ><p className="value-7-8">{this.props.game[this.props.i][this.props.j].value}</p></div>
-      )
-    } else if(this.props.game[this.props.i][this.props.j].status === 'blocked') {
+    }  else if(this.props.game[this.props.i][this.props.j].status === 'blocked') {
         return (
           <div className="game-field-blocked" onContextMenu={this.onRightClick.bind(this)} ></div>
         )
