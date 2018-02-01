@@ -7,7 +7,6 @@ import countMines from '../helpers/countMines';
 import openAround from '../helpers/openAround';
 
 class GameField extends Component {
-
   componentWillReceiveProps(nextProps) {
     if(nextProps.count === 0) {
       this.props.victory(true)
@@ -26,7 +25,6 @@ class GameField extends Component {
   onClick() {
     open.call(this, this.props.i, this.props.j);
   }
-
   onDubClick() {
     let minesNumber = countMines.call(this, this.props.i, this.props.j);
     if(this.props.game[this.props.i][this.props.j].value === minesNumber) {
@@ -57,7 +55,6 @@ class GameField extends Component {
     }
   }
 }
-
 function mapStateToProps(state) {
   return {
     game: state.game,

@@ -10,7 +10,6 @@ class Game extends Component {
     this.props.gameOver(false);
     this.props.victory(false);
   }
-
   renderStartNewGameButton() {
     if(this.props.end || this.props.victoryStatus) {
       return (
@@ -20,7 +19,6 @@ class Game extends Component {
       )
     }
   }
-
   renderMessage() {
     if(this.props.end) {
       return 'Game Over'
@@ -30,7 +28,6 @@ class Game extends Component {
       return `Mines: ${this.props.mines}`
     }
   }
-
   render() {
     return (
       <div>
@@ -47,7 +44,6 @@ class Game extends Component {
     )
   }
 }
-
 function mapStateToProps(state) {
   return {
     game: state.game,
@@ -57,5 +53,4 @@ function mapStateToProps(state) {
     mines: state.mines
   }
 }
-
 export default connect(mapStateToProps, actions)(Game)
