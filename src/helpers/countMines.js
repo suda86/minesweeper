@@ -1,7 +1,8 @@
-export default function countMines(i, j) {
-  let numOfMines = 0;
+export default function countMines(i, j, state) {
+  let numOfMines = 0
   function addMine(a, b) {
-    if( this.props.game[a][b].status === 'blocked') {
+    state = state || this.props.game
+    if( state[a][b].status === 'blocked') {
       numOfMines++;
     }
   }

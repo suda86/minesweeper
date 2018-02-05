@@ -1,7 +1,7 @@
 import getMines from './minesArr';
 
-export function getState(a, b, num) {
-  const mines = getMines(a, b, num);
+export function getState(a, b, num, random) {
+  const mines = getMines(a, b, num, random);
   const state = [];
   for(let i = 0; i < a; i ++) {
     state.push([]);

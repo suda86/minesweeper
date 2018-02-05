@@ -9,7 +9,7 @@ export default function opening(i, j) {
       try {opening.call(this, i, j + 1)} catch(e){}
       try {opening.call(this, i + 1, j - 1)} catch(e){}
       try {opening.call(this, i + 1, j)} catch(e){}
-      try {  opening.call(this, i + 1, j + 1)} catch(e){}
+      try {opening.call(this, i + 1, j + 1)} catch(e){}
     
   } else if(this.props.game[i][j].value !== 'M' && !this.props.end  && this.props.game[i][j].status === 'closed') {
     this.props.countDown();
