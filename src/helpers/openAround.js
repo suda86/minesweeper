@@ -1,12 +1,12 @@
-import open from './open';
+import opening from './open';
 
-export default function openAround({i, j}) {
-    try {open(i - 1, j - 1)} catch(e) {};
-    try {open(i - 1, j)} catch(e) {};
-    try {open(i - 1, j + 1)} catch(e) {};
-    try {open(i, j - 1)} catch(e) {};
-    try {open(i, j + 1)} catch(e) {};
-    try {open(i + 1, j - 1)} catch(e) {};
-    try {open(i + 1, j)} catch(e) {};
-    try {open(i + 1, j + 1)} catch(e) {}; 
+export default function openAround({i, j, ...props}, open = opening) {
+    try {open({ i: i - 1, j: j - 1, ...props})} catch(e) {};
+    try {open({ i: i - 1, j: j, ...props})} catch(e) {};
+    try {open({ i: i - 1, j: j + 1, ...props})} catch(e) {};
+    try {open({ i: i, j: j - 1, ...props})} catch(e) {};
+    try {open({ i: i, j: j + 1, ...props})} catch(e) {};
+    try {open({ i: i + 1, j: j - 1, ...props})} catch(e) {};
+    try {open({ i: i + 1, j: j, ...props})} catch(e) {};
+    try {open({ i: i + 1, j: j + 1, ...props})} catch(e) {}; 
 }

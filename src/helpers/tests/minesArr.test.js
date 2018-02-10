@@ -13,6 +13,7 @@ it('should return arr with good mines schedule', () => {
 })
 
 it('should return arr with good mines schedule', () => {
-    let test = minesArr(5,5,3, () => 0.97)
+    const randomMock = jest.fn(() => 0.97)
+    let test = minesArr(5,5,3, randomMock)
     expect(test).toEqual([24, 23, 22])
 })
