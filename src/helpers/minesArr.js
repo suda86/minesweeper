@@ -1,5 +1,4 @@
-export default function mines(a, b, num, random){
-  random = random || Math.random
+export default function mines(a, b, num, random = Math.random){
   const arr = [];
   const minesArr = [];
   for(let i = 0; i < a * b; i ++ ) {

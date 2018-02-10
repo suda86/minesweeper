@@ -1,26 +1,26 @@
-export default function opening(i, j) {
-  if (this.props.game[i][j].value !== 'M' && !this.props.end && this.props.game[i][j].value === 0 && this.props.game[i][j].status === 'closed') {
-    this.props.countDown();
-    this.props.open(i, j)
-      try {opening.call(this, i - 1, j - 1)} catch(e){}
-      try {opening.call(this, i - 1, j)} catch(e){}
-      try {opening.call(this, i - 1, j + 1)} catch(e){}
-      try {opening.call(this, i, j - 1)} catch(e){}
-      try {opening.call(this, i, j + 1)} catch(e){}
-      try {opening.call(this, i + 1, j - 1)} catch(e){}
-      try {opening.call(this, i + 1, j)} catch(e){}
-      try {opening.call(this, i + 1, j + 1)} catch(e){}
+export default function opening({ i, j, ...props}) {
+  if (props.game[i][j].value !== 'M' && !props.end && props.game[i][j].value === 0 && props.game[i][j].status === 'closed') {
+    props.countDown();
+    props.open(i, j)
+      try {opening({i: i - 1, j: j - 1, ...props})} catch(e){}
+      try {opening({i: i - 1, j: j, ...props})} catch(e){}
+      try {opening({i: i - 1, j: j + 1, ...props})} catch(e){}
+      try {opening({i: i, j: j - 1, ...props})} catch(e){}
+      try {opening({i: i, j: j + 1, ...props})} catch(e){}
+      try {opening({i: i + 1, j: j - 1, ...props})} catch(e){}
+      try {opening({i: i + 1, j: j, ...props})} catch(e){}
+      try {opening({i: i + 1, j: j + 1, ...props})} catch(e){}
     
-  } else if(this.props.game[i][j].value !== 'M' && !this.props.end  && this.props.game[i][j].status === 'closed') {
-    this.props.countDown();
-    this.props.open(i, j)
-  } else if(this.props.game[i][j].value === 'M' && !this.props.end && !this.props.victoryStatus  && this.props.game[i][j].status !== 'blocked'){
-    this.props.boom(i, j);
-    this.props.gameOver(true);
-    for(let i = 0; i < this.props.H; i ++) {
-      for(let j = 0; j < this.props.W; j ++) {
-        if(this.props.game[i][j].value === 'M') {
-          this.props.boom(i, j)
+  } else if(props.game[i][j].value !== 'M' && !props.end  && props.game[i][j].status === 'closed') {
+    props.countDown();
+    props.open(i, j)
+  } else if(props.game[i][j].value === 'M' && !props.end && !props.victoryStatus  && props.game[i][j].status !== 'blocked'){
+    props.boom(i, j);
+    props.gameOver(true);
+    for(let i = 0; i < props.H; i ++) {
+      for(let j = 0; j < props.W; j ++) {
+        if(props.game[i][j].value === 'M') {
+          props.boom(i, j)
         }
       }
     }

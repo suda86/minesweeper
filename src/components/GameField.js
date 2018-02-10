@@ -23,12 +23,12 @@ class GameField extends Component {
     }
   }
   onClick() {
-    open.call(this, this.props.i, this.props.j);
+    open(this.props);
   }
   onDubClick() {
-    let minesNumber = countMines.call(this, this.props.i, this.props.j);
+    let minesNumber = countMines(this.props.i, this.props.j, this.props.game);
     if(this.props.game[this.props.i][this.props.j].value === minesNumber) {
-      openAround.call(this, this.props.i, this.props.j);
+      openAround(this.props);
     }
   }
   render() {
